@@ -5,16 +5,15 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <h1>Kontak</h1>
-        <hr size="1">
-        <a href="index.html">Home</a>
-        <a href="profil.html">Profil</a>
-        <a href="kontak.html">Kontak</a>
-        <!-- form -->
-        <hr>
-        <form>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="profil.html">Profil</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+        <div class="container">
             <fieldset>
                 <legend>Form Kontak</legend>
                 Nama <br>
@@ -23,8 +22,12 @@
                 <input type="email" placeholder="Masukan Email Anda" id="email"><br>
                 Pesan <br>
                 <textarea placeholder="Tulis Pesan..."></textarea><br>
-                <button type="submit">Kirim</button>
+                <button type="submit" class="hijau">Kirim</button>
+                <button type="reset" class="kuning">Reset</button>
             </fieldset>
+        </div>
+        
+        <!-- <form>
             Text <input type="text" placeholder="Masukan Nama Anda" name="username"> <br>
             Number <input type="number"><br>
             Password <input type="password" name="password"><br>
@@ -48,7 +51,7 @@
             <textarea></textarea>
             <button type="submit">Simpan</button>
             <button type="reset">Reset</button>
-        </form>
+        </form> -->
 
         <!-- <a href="https://facebook.com">Facebook</a> -->
     </body>
