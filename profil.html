@@ -85,24 +85,97 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row mt-3">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <p id="cetak"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="profil.html">Profil</a></li>
-            <li><a href="kontak.html">Kontak</a></li>
-        </ul>
-        <div class="container">
-            <h1>Pengembangan Web</h1>  
-
-            <p>
-                <img src="images/coding (1).png" alt="coding" width="64">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam explicabo dolorum recusandae at voluptates nobis error consequuntur asperiores eum maiores soluta, veniam molestiae tempore et iste dignissimos totam. Provident, nulla. Coca&nbsp;Cola 
-            </p>
-
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis fugiat provident eum fuga quia fugit! Repellat eligendi, consequatur rem laboriosam, beatae corporis vitae, voluptatum nam atque animi nihil iste eius!</p>
-        </div> -->
         
+        <script>
+            //variabel  
+            var nama = "Mahmud";
+            var uts = 80;
+            var uas = 78;
+            var tugas = 75;
+            var na = uts * 0.3 + uas * 0.3 + tugas * 0.4;
+            var status;   
+            var grade;   
+            
+            var x = 5;
+            var y = 2;
+            
+            if(na >= 80 && na <= 100){
+                grade = "A";
+            }else if(na >= 70){
+                grade = "B";
+            }else if(na >= 60){
+                grade = "C";
+            }else if(na >= 50){
+                grade = "D";
+            }else{
+                grade = "E";
+            }
+
+            switch (grade) {
+                case 'A':
+                case 'B':
+                case 'C':
+                    status = "LULUS";
+                    break;
+                case 'D':
+                    status = "PERBAIKAN";
+                    break;
+                case 'E':
+                    status = "TIDAK LULUS";
+                    break;
+                default:
+                    status = "-";
+                    break;
+            }
+
+            var d = new Date();
+            var tahun = d.getFullYear();
+            var bulan = d.getMonth() + 1;
+            var tanggal = d.getDate();
+
+            //inner HTML
+            document.getElementById("cetak").innerHTML = "<b>Nama : </b> " + nama + "<br><b>Nilai Akhir : </b> " + na + "<br><b>Grade : </b> " + grade + "<br><b>Status : </b> " + status;
+            // document.write("Halo " + nama);
+            alert(tanggal+"/"+bulan+"/"+tahun);
+            // console.log("Halo " + nama);
+
+            //for
+            // nilai awal, kondisi, statement, incerement/dec
+            // for(i=1; i<=5; i++){
+            //     console.log(i);
+            // }
+
+            //while
+            // var i = 1;
+            // while(i<=6)
+            // {
+            //     console.log(i);
+            //     i++;
+            // }
+
+            //do while
+            var i = 1;
+            do{
+                console.log(i);
+                i++;
+            }
+            while(i <= 7);
+
+
+        </script>
+
         <script src="js/bootstrap.bundle.min.js"></script>
     </body>
 </html>
