@@ -45,14 +45,14 @@
                     <div class="card">
                         <div class="card-body">
                             <h2>Form Input Mahasiswa</h2>
-                            <form action="" method="GET">
+                            <form action="mahasiswa_save.php" method="POST">
                                 <div class="form-group">
                                     <label for="">Nim</label>
-                                    <input type="text" name="nim" class="form-control">
+                                    <input type="text" name="nim" class="form-control" required="">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Nama</label>
-                                    <input type="text" name="nama" class="form-control">
+                                    <input type="text" name="nama" class="form-control" required="">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Jurusan</label>
@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="">Alamat</label>
-                                    <input type="text" name="alamat" class="form-control">
+                                    <input type="text" name="alamat" class="form-control" required="">
                                 </div>
                                 <div class="form-group mt-3">
                                     <button type="submit" name="cetak" class="btn btn-primary">Simpan</button>
@@ -80,7 +80,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Profil</h5>
+                            <h5 class="card-title">Data Mahasiswa</h5>
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
@@ -92,21 +92,18 @@
                                 </thead>
                                 <tbody>
                                 <?php
-                                    //var_dump($_POST);
-                                    if(isset($_GET['cetak']))
+                                    require_once 'config/koneksi.php';
+                                    $sql = mysqli_query($con, "SELECT * FROM mahasiswa");
+                                    while($r = mysqli_fetch_array($sql))
                                     {
-                                        $nim = $_GET['nim'];
-                                        $nama = $_GET['nama'];
-                                        $jurusan = $_GET['jurusan'];
-                                        $alamat = $_GET['alamat'];
-
                                         echo "<tr>
-                                                <td>$nim</td>
-                                                <td>$nama</td>
-                                                <td>$jurusan</td>
-                                                <td>$alamat</td>
+                                                <td>$r[nim]</td>
+                                                <td>$r[nama]</td>
+                                                <td>$r[jurusan]</td>
+                                                <td>$r[alamat]</td>
                                             </tr>";
                                     }
+                                    
                                 ?>
                                 </tbody>
                             </table>
