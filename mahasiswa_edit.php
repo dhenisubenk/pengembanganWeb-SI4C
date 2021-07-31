@@ -1,3 +1,30 @@
+<?php  
+    require_once 'config/koneksi.php';
+
+    if (isset($_GET['nim'])) {
+        
+        $nim = $_GET['nim'];
+        
+        $sql = mysqli_query($con, "SELECT * FROM mahasiswa WHERE nim = '$nim'");
+        $jml = mysqli_num_rows($sql);   // -> jumlah baris yang dihasilkan dari query
+
+        if ($jml > 0) {
+           $r = mysqli_fetch_array($sql);
+        }else{
+            echo "<script>
+                alert('Data Tidak ditemukan');
+                window.location.href = 'mahasiswa.php';
+            </script>";
+        }
+    }
+    else
+    {
+        echo "<script>
+                window.location.href = 'mahasiswa.php';
+            </script>";
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -45,79 +72,36 @@
                     <div class="card">
                         <div class="card-body">
                             <h2>Form Input Mahasiswa</h2>
-                            <form action="mahasiswa_save.php" method="POST">
+                            <form action="mahasiswa_update.php" method="POST">
                                 <div class="form-group">
                                     <label for="">Nim</label>
-                                    <input type="text" name="nim" class="form-control" required="">
+                                    <input type="text" name="nim" class="form-control" value="<?= $r['nim']?>" required="" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Nama</label>
-                                    <input type="text" name="nama" class="form-control" required="">
+                                    <input type="text" name="nama" class="form-control" value="<?= $r['nama']?>" required="">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Jurusan</label>
                                     <select name="jurusan" class="form-control">
-                                        <option>Sistem Informasi</option>
-                                        <option>Teknik Informatika</option>
-                                        <option>Manajemen Informatika</option>
-                                        <option>Komputerisasi Akuntansi</option>
+                                        <option <?php if($r['jurusan'] == "Sistem Informasi"){ echo "selected"; }?> >Sistem Informasi</option>
+                                        <option <?php if($r['jurusan'] == "Teknik Informatika"){ echo "selected"; }?>>Teknik Informatika</option>
+                                        <option <?php if($r['jurusan'] == "Manajemen Informatika"){ echo "selected"; }?>>Manajemen Informatika</option>
+                                        <option <?php if($r['jurusan'] == "Komputerisasi Akuntansi"){ echo "selected"; }?>>Komputerisasi Akuntansi</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Alamat</label>
-                                    <input type="text" name="alamat" class="form-control" required="">
+                                    <input type="text" name="alamat" class="form-control" value="<?= $r['alamat']?>" required="">
                                 </div>
                                 <div class="form-group mt-3">
-                                    <button type="submit" name="cetak" class="btn btn-primary">Simpan</button>
+                                    <button type="submit" name="cetak" class="btn btn-primary">Update</button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="row mt-3">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Data Mahasiswa</h5>
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>NIM</th>
-                                        <th>NAMA</th>
-                                        <th>JURUSAN</th>
-                                        <th>ALAMAT</th>
-                                        <th>#</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <?php
-                                    require_once 'config/koneksi.php';
-                                    $sql = mysqli_query($con, "SELECT * FROM mahasiswa");
-                                    while($r = mysqli_fetch_array($sql))
-                                    {
-                                        echo "<tr>
-                                                <td>$r[nim]</td>
-                                                <td>$r[nama]</td>
-                                                <td>$r[jurusan]</td>
-                                                <td>$r[alamat]</td>
-                                                <td>
-                                                    <a href='mahasiswa_edit.php?nim=$r[nim]' class='btn btn-sm btn-warning'>Edit</a>
-                                                    <a href='mahasiswa_hapus.php?nim=$r[nim]' onclick=\"return confirm('Hapus Data?')\" class='btn btn-sm btn-danger'>Hapus</a>
-                                                </td>
-                                            </tr>";
-                                    }
-                                    
-                                ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            
         </div>
 
         <script src="js/bootstrap.bundle.min.js"></script>
