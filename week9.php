@@ -20,21 +20,7 @@
         <div class="container-fluid mb-2 p-0">
             <div class="row">
                 <div class="col-lg-12">
-                    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
-                        <div class="container">
-                          <a class="navbar-brand" href="index.html">STIKOM<strong>AMBON</strong></a>
-                          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                          </button>
-                          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                            <div class="navbar-nav">
-                              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-                              <a class="nav-link" href="profil.html">Profil</a>
-                              <a class="nav-link" href="kontak.html">Kontak</a>
-                            </div>
-                          </div>
-                        </div>
-                    </nav>
+                    <?php require_once 'config/menu.php'; ?>
                 </div>
             </div>
         </div>

@@ -2,8 +2,12 @@
 	require_once 'config/koneksi.php';
 
 	$username = $_POST['username'];
-	$password = $_POST['password'];
+	$pass = $_POST['password'];		//admin
 	$level = $_POST['level'];
+	$password = password_hash($pass, PASSWORD_DEFAULT); 
+	
+	// 2 arah enkrip > decrypt
+	// 1 arah -> hash
 	
 	$nama_file = $_FILES['foto']['name'];			//Gambar.PNG
 	$tmp_file = $_FILES['foto']['tmp_name'];
